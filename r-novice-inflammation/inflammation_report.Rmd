@@ -1,0 +1,40 @@
+---
+title: "inflammation_report"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Inflammation
+The code is form the previous practice.
+Analyzing Multiple Data Sets. Function
+
+```{r, echo=TRUE}
+analyze <- function(filename) {
+  # Plots the average, min, and max inflammation over time.
+  # Input is character string of a csv file.
+  dat <- read.csv(file = filename, header = FALSE)
+  avg_day_inflammation <- apply(dat, 2, mean)
+  plot(avg_day_inflammation)
+  max_day_inflammation <- apply(dat, 2, max)
+  plot(max_day_inflammation)
+  min_day_inflammation <- apply(dat, 2, min)
+  plot(min_day_inflammation)
+}
+```
+
+## Inflammation Result Plots
+
+*index* is **patient number**.
+
+ `echo = FALSE` prevents printing of the R code that generated the plot.
+
+1. mean
+2. max
+3. min:
+
+```{r, echo=FALSE}
+analyze("data/inflammation-01.csv")
+```
